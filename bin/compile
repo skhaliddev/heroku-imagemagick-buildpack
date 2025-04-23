@@ -15,7 +15,7 @@ function vendor() {
   local path="$2"
 
   mkdir -p $path
-  tar -xj -f $binary -C $path
+  tar -xz -f $binary -C $path
 
   if [ -d "$path/bin" ]; then
     export PATH="$path/bin:$PATH"
@@ -31,7 +31,7 @@ function vendor() {
   export LD_LIBRARY_PATH="$path/lib:$LD_LIBRARY_PATH"
 }
 
-vendor "$ROOT_DIR/build/imagemagick.tar.bz2" "$BUILD_DIR/vendor/imagemagick"
+vendor "$ROOT_DIR/build/imagemagick.tar.gz" "$BUILD_DIR/vendor/imagemagick"
 
 cat <<EOF > export
 export MAGICK_HOME="$BUILD_DIR/vendor/imagemagick"
